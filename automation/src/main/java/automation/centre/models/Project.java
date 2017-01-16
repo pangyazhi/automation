@@ -1,7 +1,10 @@
 package automation.centre.models;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.LinkedList;
 
 /**
  * Created by jien.huang on 12/01/2017.
@@ -31,4 +34,11 @@ public class Project extends Model {
     public Project(){
         this.setType("Project");
     }
+    @DBRef
+    private LinkedList<TestSuite> suites = new LinkedList<>();
+
+    public void addSuite(TestSuite suite){
+        this.suites.add(suite);
+    }
+
 }

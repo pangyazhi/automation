@@ -5,7 +5,8 @@ import automation.centre.models.TestSuite;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -14,10 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class AutomationApplicationTests {
 
 
-//    Logger logger;
+	static Logger logger = LoggerFactory.getLogger("ApplicationTest");
 
-    @Autowired
-    Repository repository;
 
 	@Before
 	public void setUp(){
@@ -29,11 +28,19 @@ public class AutomationApplicationTests {
 	public void contextLoads() {
 		Project project = new Project();
 		project.setName("Project");
-		RepositoryFactory.getInstance().save(project);
+		project.setVersion("1.0");
+		project.setBuild("1.0.3");
+		project = (Project) RepositoryFactory.getInstance().create(project);
+		RepositoryFactory.getInstance().clone(project);
 
 		TestSuite testSuite = new TestSuite();
 		testSuite.setName("TestSuite");
+		project.addSuite(testSuite);
 		RepositoryFactory.getInstance().save(testSuite);
+		testSuite = (TestSuite) RepositoryFactory.getInstance().clone(testSuite);
+
+		project.addSuite(testSuite);
+		RepositoryFactory.getInstance().update(project);
 	}
 
 }

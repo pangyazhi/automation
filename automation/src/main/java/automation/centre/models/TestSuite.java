@@ -8,9 +8,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document
 @EnableAutoConfiguration
-public class TestSuite extends Model {
+public class TestSuite extends TestScript {
 
     public TestSuite(){
         this.setType("TestSuite");
+    }
+
+    @Override
+    public boolean run() {
+        return false;
     }
 }
