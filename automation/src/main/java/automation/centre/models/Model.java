@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Created by jien.huang on 12/01/2017.
  */
-@CompoundIndex(name="type_name_idx", def="{'type':1, 'name':1}")
+@CompoundIndex(name = "type_name_idx", def = "{'type':1, 'name':1}")
 public abstract class Model implements Cloneable {
 
 
@@ -24,6 +24,19 @@ public abstract class Model implements Cloneable {
     @Indexed
     private String name;
     private String description;
+    private String type;
+    private boolean isDisabled;
+    @Indexed
+    private Date updatedAt;
+    private String updatedBy;
+    private Date createdAt;
+    private String createdBy;
+
+    public static Object fromJson(String jsonString, Class klass) {
+        Gson gson = new Gson();
+
+        return gson.fromJson(jsonString, klass);
+    }
 
     public String get_id() {
         return _id;
@@ -81,13 +94,6 @@ public abstract class Model implements Cloneable {
         this.updatedBy = updatedBy;
     }
 
-    private String type;
-    private boolean isDisabled;
-    @Indexed
-    private Date updatedAt;
-    private String updatedBy;
-    private Date createdAt;
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -104,22 +110,13 @@ public abstract class Model implements Cloneable {
         this.createdBy = createdBy;
     }
 
-    private String createdBy;
-
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
 
-    public static Object fromJson(String jsonString, Class klass) {
-        Gson gson = new Gson();
-
-        return gson.fromJson(jsonString, klass);
-    }
-
-
     @Override
-    public Object clone() throws CloneNotSupportedException{
+    public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
 

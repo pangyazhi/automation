@@ -16,24 +16,21 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AutomationApplication implements CommandLineRunner {
 
+    static Logger logger = LoggerFactory.getLogger("Application");
     @Autowired
     Repository repository;
 
-    static Logger logger = LoggerFactory.getLogger("Application");
-
-
-
-    public static void main(String[] args)  {
-		ApplicationContext ctx = SpringApplication.run(AutomationApplication.class, args);
+    public static void main(String[] args) {
+        ApplicationContext ctx = SpringApplication.run(AutomationApplication.class, args);
         //ctx.getBean(Repository.class);
 
-	}
+    }
 
 
     @Override
     public void run(String... strings) throws Exception {
         logger.info("Application is running ...");
         RepositoryFactory.getInstance().setRepository(repository);
-        logger.info("Records number:"+RepositoryFactory.getInstance().count());
+        logger.info("Records number:" + RepositoryFactory.getInstance().count());
     }
 }

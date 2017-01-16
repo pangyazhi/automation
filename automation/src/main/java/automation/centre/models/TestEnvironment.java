@@ -6,7 +6,11 @@ import java.util.LinkedList;
  * Created by jien.huang on 16/01/2017.
  */
 public class TestEnvironment extends Model {
-    public TestEnvironment(){
+    private LinkedList<Variable> settings = new LinkedList<>();
+    private TestClient host;
+    private TestClient client;
+
+    public TestEnvironment() {
         this.setType("TestEnvironment");
     }
 
@@ -33,9 +37,5 @@ public class TestEnvironment extends Model {
     public void setClient(TestClient client) {
         this.client = client;
     }
-
-    private LinkedList<Variable> settings = new LinkedList<>();
-    private TestClient host;
-    private TestClient client;
 
 }

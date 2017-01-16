@@ -16,9 +16,9 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger("Controller");
     //Gson gson = new Gson();
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET )
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
-    public String hello(){
+    public String hello() {
         return "{\"message\": \"OK\"}";
     }
 }

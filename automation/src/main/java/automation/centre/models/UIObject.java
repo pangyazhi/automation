@@ -4,7 +4,12 @@ package automation.centre.models;
  * Created by jien.huang on 16/01/2017.
  */
 public class UIObject extends Model {
-    public UIObject(){
+    private String uiname;
+    private String uiid;
+    private String xpath;
+    private String image;
+
+    public UIObject() {
         this.setType("UIObject");
     }
 
@@ -39,10 +44,5 @@ public class UIObject extends Model {
     public void setImage(String image) {
         this.image = image;
     }
-
-    private String uiname;
-    private String uiid;
-    private String xpath;
-    private String image;
 
 }

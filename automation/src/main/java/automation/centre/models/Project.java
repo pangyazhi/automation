@@ -14,6 +14,12 @@ import java.util.LinkedList;
 public class Project extends Model {
     private String version;
     private String build;
+    @DBRef
+    private LinkedList<TestSuite> suites = new LinkedList<>();
+
+    public Project() {
+        this.setType("Project");
+    }
 
     public String getVersion() {
         return version;
@@ -31,13 +37,7 @@ public class Project extends Model {
         this.build = build;
     }
 
-    public Project(){
-        this.setType("Project");
-    }
-    @DBRef
-    private LinkedList<TestSuite> suites = new LinkedList<>();
-
-    public void addSuite(TestSuite suite){
+    public void addSuite(TestSuite suite) {
         this.suites.add(suite);
     }
 

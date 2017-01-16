@@ -3,8 +3,11 @@ package automation.centre.models;
 /**
  * Created by jien.huang on 16/01/2017.
  */
-public class Variable extends Model{
-    public Variable(){
+public class Variable extends Model {
+    private Object value;
+    private boolean isRequired;
+
+    public Variable() {
         this.setType("Variable");
     }
 
@@ -23,7 +26,4 @@ public class Variable extends Model{
     public void setRequired(boolean required) {
         isRequired = required;
     }
-
-    private Object value;
-    private boolean isRequired;
 }

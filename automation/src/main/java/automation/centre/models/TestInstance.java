@@ -8,12 +8,18 @@ import java.util.LinkedList;
  * Created by jien.huang on 16/01/2017.
  */
 public class TestInstance extends Model {
-    public TestInstance(){
-        this.setType("TestInstance");
-    }
-
     @DBRef
     private LinkedList<TestSuite> testSuites = new LinkedList<>();
+    @DBRef
+    private TestEnvironment environment;
+    @DBRef
+    private LinkedList<TestResult> results;
+    @DBRef
+    private Task lastTask;
+
+    public TestInstance() {
+        this.setType("TestInstance");
+    }
 
     public LinkedList<TestSuite> getTestSuites() {
         return testSuites;
@@ -46,11 +52,4 @@ public class TestInstance extends Model {
     public void setLastTask(Task lastTask) {
         this.lastTask = lastTask;
     }
-
-    @DBRef
-    private TestEnvironment environment;
-    @DBRef
-    private LinkedList<TestResult> results;
-    @DBRef
-    private Task lastTask;
 }

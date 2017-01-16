@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @EnableAutoConfiguration
 public class TestSuite extends TestScript {
 
-    public TestSuite(){
+    public TestSuite() {
         this.setType("TestSuite");
     }
 
