@@ -14,6 +14,15 @@ import java.util.LinkedList;
 public class Project extends Model {
     private String version;
     private String build;
+
+    public LinkedList<TestSuite> getSuites() {
+        return suites;
+    }
+
+    public void setSuites(LinkedList<TestSuite> suites) {
+        this.suites = suites;
+    }
+
     @DBRef
     private LinkedList<TestSuite> suites = new LinkedList<>();
 
