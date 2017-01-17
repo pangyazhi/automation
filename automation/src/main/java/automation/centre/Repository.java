@@ -1,9 +1,10 @@
 package automation.centre;
 
 import automation.centre.models.Model;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
 
@@ -11,15 +12,51 @@ import java.util.List;
  * Created by jien.huang on 12/01/2017.
  */
 
-@RepositoryRestResource
-public interface Repository extends MongoRepository<Model, String> {
+@org.springframework.stereotype.Repository
+public class Repository  {
 
-    Model findByName(String name);
+    @Autowired
+    private MongoTemplate template;
 
-    //@Query(value = "{ 'name' : { '$regex' : regex } , 'description' : {'$regex' : regex}")
-    @Query("{$or: [ {'name' : {'$regex' : ?0 , '$options' : 'i'}}, {'description' : {'$regex' : ?0 , '$options' : 'i' }}]}")
-    List<Model> findByRegex(String regex);
+    Model findByName(String name){
+        Query q = Query.query(Criteria.where("name").is(name));
+        Model model = template.findOne(q, Model.class);
+        return model;
+    }
 
-    @Query("{ 'type': {'$regex' : ?1 , '$options' : 'i' }, '$and':[  {$or: [ {'name' : {'$regex' : ?0 , '$options' : 'i'}}, {'description' : {'$regex' : ?0 , '$options' : 'i' }}]}]}")
-    List<Model> findByRegexWithType(String regex, String type);
+    Model findById(String id){
+        return template.findById(id, Model.class);
+    }
+
+    void save(Model model){
+        template.save(model, "models");
+        //template.save(model);
+    }
+
+    void deleteAll(){
+        template.dropCollection(Model.class);
+    }
+
+    List<Model> findByRegex(String regex){
+        Query q = Query.query(Criteria.where("name").regex(regex).orOperator(Criteria.where("description").regex(regex)));
+        return template.find(q, Model.class);
+    }
+
+    List<Model> findByRegexWithType(String regex, String type){
+        Query q = Query.query(Criteria.where("type").is(type).andOperator(
+                Criteria.where("name").regex(regex).orOperator(Criteria.where("description").regex(regex))
+        ));
+        return template.find(q, Model.class);
+    }
+
+    long count(){
+        return template.count(new Query().limit(1), Model.class);
+    }
+
+//    //@Query(value = "{ 'name' : { '$regex' : regex } , 'description' : {'$regex' : regex}")
+//    @Query("{$or: [ {'name' : {'$regex' : ?0 , '$options' : 'i'}}, {'description' : {'$regex' : ?0 , '$options' : 'i' }}]}")
+//    List<Model> findByRegex(String regex);
+//
+//    @Query("{ 'type': {'$regex' : ?1 , '$options' : 'i' }, '$and':[  {$or: [ {'name' : {'$regex' : ?0 , '$options' : 'i'}}, {'description' : {'$regex' : ?0 , '$options' : 'i' }}]}]}")
+//    List<Model> findByRegexWithType(String regex, String type);
 }

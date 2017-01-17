@@ -136,3 +136,5 @@ auto/node_modules/.bin/cssesc
 auto/node_modules/.bin/webpack
 
 auto/node_modules/.bin/webpack-dev-server
+
+*.xml

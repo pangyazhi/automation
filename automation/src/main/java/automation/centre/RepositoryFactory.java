@@ -12,9 +12,11 @@ import java.util.UUID;
 /**
  * Created by jien.huang on 13/01/2017.
  */
+
 public class RepositoryFactory {
     private static RepositoryFactory _instance;
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
     @Autowired
     private Repository repository;
 
@@ -34,13 +36,16 @@ public class RepositoryFactory {
 
     protected Model save(Model model) {
         model.setUpdatedAt(new Date());
-        return repository.save(model);
+        repository.save(model);
+        return model;
     }
 
     public Model create(Model model) {
+        model.set_id(UUID.randomUUID().toString());
         model.setCreatedAt(new Date());
         model.setDisabled(false);
-        return save(model);
+        repository.save(model);
+        return model;
     }
 
     public void update(Model model) {
@@ -66,9 +71,7 @@ public class RepositoryFactory {
         return gson.toJson(modelList);
     }
 
-    public void delete(Model model) {
-        repository.delete(model);
-    }
+
 
     public void deleteAll() {
         repository.deleteAll();
@@ -83,6 +86,8 @@ public class RepositoryFactory {
     }
 
     public String getById(String id){
-        return repository.findOne(id).toJson();
+
+        Model model = repository.findById(id);
+        return model.toJson();
     }
 }

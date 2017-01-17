@@ -30,5 +30,15 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
+    <!-- Define the MongoTemplate which handles connectivity with MongoDB -->
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongo" ref="mongo" />
+        <constructor-arg name="databaseName" value="test" />
+    </bean>
+
+    <!-- Factory bean that creates the MongoDB instance -->
+    <bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+        <property name="host" value="localhost"/>
+    </bean>
 
 </beans>

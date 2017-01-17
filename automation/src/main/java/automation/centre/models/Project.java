@@ -4,7 +4,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by jien.huang on 12/01/2017.
@@ -15,7 +17,7 @@ public class Project extends Model {
     private String version;
     private String build;
 
-    public LinkedList<TestSuite> getSuites() {
+    public List<TestSuite> getSuites() {
         return suites;
     }
 
@@ -24,7 +26,7 @@ public class Project extends Model {
     }
 
     @DBRef
-    private LinkedList<TestSuite> suites = new LinkedList<TestSuite>();
+    private List<TestSuite> suites = new ArrayList<TestSuite>();
 
     public Project() {
         this.setType("Project");
