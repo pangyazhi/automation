@@ -35,13 +35,15 @@ public class AutomationApplicationTests {
 
         TestSuite testSuite = new TestSuite();
         testSuite.setName("TestSuite");
+        RepositoryFactory.getInstance().save(testSuite);
         project.addSuite(testSuite);
         RepositoryFactory.getInstance().save(testSuite);
         testSuite = (TestSuite) RepositoryFactory.getInstance().clone(testSuite);
-
+        RepositoryFactory.getInstance().save(testSuite);
         project.addSuite(testSuite);
         RepositoryFactory.getInstance().update(project);
         logger.info("project json:"+project.toJson());
+        logger.info("project id:"+project.get_id());
         logger.info("found project:"+RepositoryFactory.getInstance().getById(project.get_id()));
         //logger.info("test suites under project"+RepositoryFactory.getInstance().listToJson(project.getSuites()));
     }

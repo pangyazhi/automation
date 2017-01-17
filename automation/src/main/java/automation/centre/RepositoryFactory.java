@@ -41,7 +41,7 @@ public class RepositoryFactory {
     }
 
     public Model create(Model model) {
-        model.set_id(UUID.randomUUID().toString());
+        //model.set_id(UUID.randomUUID().toString());
         model.setCreatedAt(new Date());
         model.setDisabled(false);
         repository.save(model);

@@ -20,12 +20,12 @@ public class Repository  {
 
     Model findByName(String name){
         Query q = Query.query(Criteria.where("name").is(name));
-        Model model = template.findOne(q, Model.class);
+        Model model = template.findOne(q, Model.class, "models");
         return model;
     }
 
     Model findById(String id){
-        return template.findById(id, Model.class);
+        return template.findById(id, Model.class, "models");
     }
 
     void save(Model model){
@@ -34,23 +34,23 @@ public class Repository  {
     }
 
     void deleteAll(){
-        template.dropCollection(Model.class);
+        template.dropCollection("models");
     }
 
     List<Model> findByRegex(String regex){
         Query q = Query.query(Criteria.where("name").regex(regex).orOperator(Criteria.where("description").regex(regex)));
-        return template.find(q, Model.class);
+        return template.find(q, Model.class, "models");
     }
 
     List<Model> findByRegexWithType(String regex, String type){
         Query q = Query.query(Criteria.where("type").is(type).andOperator(
                 Criteria.where("name").regex(regex).orOperator(Criteria.where("description").regex(regex))
         ));
-        return template.find(q, Model.class);
+        return template.find(q, Model.class, "models");
     }
 
     long count(){
-        return template.count(new Query().limit(1), Model.class);
+        return template.count(new Query().limit(1), Model.class, "models");
     }
 
 //    //@Query(value = "{ 'name' : { '$regex' : regex } , 'description' : {'$regex' : regex}")

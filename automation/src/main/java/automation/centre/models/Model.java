@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by jien.huang on 12/01/2017.
@@ -16,6 +17,9 @@ import java.util.Date;
 @CompoundIndex(name = "type_name_idx", def = "{'type':1, 'name':1}")
 public abstract class Model implements Cloneable {
 
+    public Model(){
+        this.set_id(UUID.randomUUID().toString());
+    }
 
     static Logger logger = LoggerFactory.getLogger("Models");
 
@@ -43,7 +47,7 @@ public abstract class Model implements Cloneable {
         return _id;
     }
 
-    public void set_id(String _id) {
+    public final void set_id(String _id) {
         this._id = _id;
     }
 

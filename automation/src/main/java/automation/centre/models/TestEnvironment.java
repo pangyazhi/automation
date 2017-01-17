@@ -1,16 +1,20 @@
 package automation.centre.models;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.LinkedList;
 
 /**
  * Created by jien.huang on 16/01/2017.
  */
+@Document(collection = "models")
 public class TestEnvironment extends Model {
     private LinkedList<Variable> settings = new LinkedList<>();
     private TestClient host;
     private TestClient client;
 
     public TestEnvironment() {
+        super();
         this.setType("TestEnvironment");
     }
 

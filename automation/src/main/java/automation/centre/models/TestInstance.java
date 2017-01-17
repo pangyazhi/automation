@@ -1,12 +1,14 @@
 package automation.centre.models;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.LinkedList;
 
 /**
  * Created by jien.huang on 16/01/2017.
  */
+@Document(collection = "models")
 public class TestInstance extends Model {
     @DBRef
     private LinkedList<TestSuite> testSuites = new LinkedList<>();
@@ -18,6 +20,7 @@ public class TestInstance extends Model {
     private Task lastTask;
 
     public TestInstance() {
+        super();
         this.setType("TestInstance");
     }
 

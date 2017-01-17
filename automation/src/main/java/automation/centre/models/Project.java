@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by jien.huang on 12/01/2017.
  */
-@Document
+@Document(collection = "models")
 @EnableAutoConfiguration
 public class Project extends Model {
     private String version;
@@ -29,6 +29,7 @@ public class Project extends Model {
     private List<TestSuite> suites = new ArrayList<TestSuite>();
 
     public Project() {
+        super();
         this.setType("Project");
     }
 

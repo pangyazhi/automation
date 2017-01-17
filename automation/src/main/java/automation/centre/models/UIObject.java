@@ -1,8 +1,11 @@
 package automation.centre.models;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * Created by jien.huang on 16/01/2017.
  */
+@Document(collection = "models")
 public class UIObject extends Model {
     private String uiname;
     private String uiid;
@@ -10,6 +13,7 @@ public class UIObject extends Model {
     private String image;
 
     public UIObject() {
+        super();
         this.setType("UIObject");
     }
 
