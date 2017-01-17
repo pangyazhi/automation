@@ -1,10 +1,12 @@
 package automation.centre;
 
 import automation.centre.models.Model;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.lang.reflect.Field;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -12,6 +14,7 @@ import java.util.UUID;
  */
 public class RepositoryFactory {
     private static RepositoryFactory _instance;
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @Autowired
     private Repository repository;
 
@@ -59,17 +62,8 @@ public class RepositoryFactory {
         return create(newModel);
     }
 
-    private void copyValues(Model model, Model newModel, Field field) {
-        try {
-            Object value = field.get(model);
-            Field newModelField = newModel.getClass().getField(field.getName());
-            newModelField.setAccessible(true);
-            newModelField.set(newModel, value);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
+    public String listToJson(List<Model> modelList){
+        return gson.toJson(modelList);
     }
 
     public void delete(Model model) {
@@ -82,5 +76,13 @@ public class RepositoryFactory {
 
     public long count() {
         return repository.count();
+    }
+
+    public String getByName(String name){
+        return repository.findByName(name).toJson();
+    }
+
+    public String getById(String id){
+        return repository.findOne(id).toJson();
     }
 }

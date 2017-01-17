@@ -24,7 +24,7 @@ public class Project extends Model {
     }
 
     @DBRef
-    private LinkedList<TestSuite> suites = new LinkedList<>();
+    private LinkedList<TestSuite> suites = new LinkedList<TestSuite>();
 
     public Project() {
         this.setType("Project");

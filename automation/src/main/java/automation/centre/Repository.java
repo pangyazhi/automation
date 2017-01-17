@@ -1,18 +1,19 @@
 package automation.centre;
 
 import automation.centre.models.Model;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
 /**
  * Created by jien.huang on 12/01/2017.
  */
-@EnableAutoConfiguration
-@org.springframework.stereotype.Repository
+
+@RepositoryRestResource
 public interface Repository extends MongoRepository<Model, String> {
+
     Model findByName(String name);
 
     //@Query(value = "{ 'name' : { '$regex' : regex } , 'description' : {'$regex' : regex}")

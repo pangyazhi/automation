@@ -9,27 +9,27 @@ import java.util.LinkedList;
  */
 public abstract class TestScript extends Model {
     @DBRef
-    private LinkedList<InputVariable> inputVariables = new LinkedList<>();
+    private LinkedList<Variable> inputVariables = new LinkedList<>();
     @DBRef
-    private LinkedList<OutputVariable> outputVariables = new LinkedList<>();
+    private LinkedList<Variable> outputVariables = new LinkedList<>();
     @DBRef
     private LinkedList<TestScript> subTestScripts = new LinkedList<>();
     private boolean isRerunnable;
     private Enum<HANDLE> handle;
 
-    public LinkedList<InputVariable> getInputVariables() {
+    public LinkedList<Variable> getInputVariables() {
         return inputVariables;
     }
 
-    public void setInputVariables(LinkedList<InputVariable> inputVariables) {
+    public void setInputVariables(LinkedList<Variable> inputVariables) {
         this.inputVariables = inputVariables;
     }
 
-    public LinkedList<OutputVariable> getOutputVariables() {
+    public LinkedList<Variable> getOutputVariables() {
         return outputVariables;
     }
 
-    public void setOutputVariables(LinkedList<OutputVariable> outputVariables) {
+    public void setOutputVariables(LinkedList<Variable> outputVariables) {
         this.outputVariables = outputVariables;
     }
 
@@ -49,11 +49,11 @@ public abstract class TestScript extends Model {
         this.handle = handle;
     }
 
-    public void addInputVariable(InputVariable inputVariable) {
+    public void addInputVariable(Variable inputVariable) {
         this.inputVariables.add(inputVariable);
     }
 
-    public void addOutputVariable(OutputVariable outputVariable) {
+    public void addOutputVariable(Variable outputVariable) {
 
     }
 

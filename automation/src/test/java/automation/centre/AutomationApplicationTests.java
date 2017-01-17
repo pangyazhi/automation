@@ -42,6 +42,8 @@ public class AutomationApplicationTests {
         project.addSuite(testSuite);
         RepositoryFactory.getInstance().update(project);
         logger.info("project json:"+project.toJson());
+        logger.info("found project:"+RepositoryFactory.getInstance().getById(project.get_id()));
+        //logger.info("test suites under project"+RepositoryFactory.getInstance().listToJson(project.getSuites()));
     }
 
 }
