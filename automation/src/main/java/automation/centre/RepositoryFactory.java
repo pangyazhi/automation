@@ -45,7 +45,8 @@ public class RepositoryFactory {
         model.setCreatedAt(new Date());
         model.setDisabled(false);
         repository.save(model);
-        return model;
+        return repository.findById(model.get_id());
+        //return model;
     }
 
     public void update(Model model) {

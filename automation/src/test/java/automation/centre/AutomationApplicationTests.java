@@ -46,7 +46,7 @@ public class AutomationApplicationTests {
         logger.info("project json:"+project.toJson());
         logger.info("project id:"+project.get_id());
         logger.info("found project:"+RepositoryFactory.getInstance().getById(project.get_id()));
-        //logger.info("test suites under project"+RepositoryFactory.getInstance().listToJson(project.getSuites()));
+
     }
 
 }
