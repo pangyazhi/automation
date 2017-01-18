@@ -54,7 +54,11 @@ public abstract class TestScript extends Model {
     }
 
     public void addOutputVariable(Variable outputVariable) {
+        this.outputVariables.add(outputVariable);
+    }
 
+    public void addSuite(TestScript script) {
+        this.subTestScripts.add(script);
     }
 
     public boolean isRerunnable() {
