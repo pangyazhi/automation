@@ -10,7 +10,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class TestResult extends Model {
     @DBRef
     private Task task;
-    private String respone;
+
+    private String response;
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
     public TestResult() {
         super();
         this.setType("TestResult");

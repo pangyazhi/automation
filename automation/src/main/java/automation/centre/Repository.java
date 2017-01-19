@@ -13,50 +13,48 @@ import java.util.List;
  */
 
 @org.springframework.stereotype.Repository
-public class Repository  {
+class Repository {
 
+    private static final String MODELS = "models";
     @Autowired
     private MongoTemplate template;
 
-    Model findByName(String name){
+    List<Model> findByName(String name) {
         Query q = Query.query(Criteria.where("name").is(name));
-        Model model = template.findOne(q, Model.class, "models");
-        return model;
+        return template.find(q, Model.class, MODELS);
+    }
+
+    List<Model> findByType(String type) {
+        Query q = Query.query(Criteria.where("type").is(type));
+        return template.find(q, Model.class, MODELS);
     }
 
     Model findById(String id){
-        return template.findById(id, Model.class, "models");
+        return template.findById(id, Model.class, MODELS);
     }
 
     void save(Model model){
-        template.save(model, "models");
-        //template.save(model);
+        template.save(model, MODELS);
     }
 
     void deleteAll(){
-        template.dropCollection("models");
+        template.dropCollection(MODELS);
     }
 
     List<Model> findByRegex(String regex){
         Query q = Query.query(Criteria.where("name").regex(regex).orOperator(Criteria.where("description").regex(regex)));
-        return template.find(q, Model.class, "models");
+        return template.find(q, Model.class, MODELS);
     }
 
     List<Model> findByRegexWithType(String regex, String type){
         Query q = Query.query(Criteria.where("type").is(type).andOperator(
                 Criteria.where("name").regex(regex).orOperator(Criteria.where("description").regex(regex))
         ));
-        return template.find(q, Model.class, "models");
+        return template.find(q, Model.class, MODELS);
     }
 
     long count(){
-        return template.count(new Query().limit(1), Model.class, "models");
+        return template.count(new Query().limit(1), Model.class, MODELS);
     }
 
-//    //@Query(value = "{ 'name' : { '$regex' : regex } , 'description' : {'$regex' : regex}")
-//    @Query("{$or: [ {'name' : {'$regex' : ?0 , '$options' : 'i'}}, {'description' : {'$regex' : ?0 , '$options' : 'i' }}]}")
-//    List<Model> findByRegex(String regex);
-//
-//    @Query("{ 'type': {'$regex' : ?1 , '$options' : 'i' }, '$and':[  {$or: [ {'name' : {'$regex' : ?0 , '$options' : 'i'}}, {'description' : {'$regex' : ?0 , '$options' : 'i' }}]}]}")
-//    List<Model> findByRegexWithType(String regex, String type);
 }

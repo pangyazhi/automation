@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AutomationApplicationTests {
 
 
-    static Logger logger = LoggerFactory.getLogger("ApplicationTest");
+    private static final Logger logger = LoggerFactory.getLogger("ApplicationTest");
 
     private MockMvc mockMvc;
     @Autowired
@@ -42,8 +42,8 @@ public class AutomationApplicationTests {
     public void contextLoads() throws Exception {
         this.mockMvc.perform(get("/hello")).andExpect(jsonPath("message", is("OK")));
 
-        logger.info(RepositoryFactory.getInstance().getByName("Project"));
-        logger.info(RepositoryFactory.getInstance().getByName("Test Environment"));
+        logger.info(RepositoryFactory.getInstance().findByName("Project"));
+        logger.info(RepositoryFactory.getInstance().findByName("Test Environment"));
     }
 
 }

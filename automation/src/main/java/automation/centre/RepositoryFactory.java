@@ -34,10 +34,9 @@ public class RepositoryFactory {
         this.repository = repository;
     }
 
-    protected Model save(Model model) {
+    void save(Model model) {
         model.setUpdatedAt(new Date());
         repository.save(model);
-        return model;
     }
 
     public Model create(Model model) {
@@ -72,7 +71,17 @@ public class RepositoryFactory {
         return gson.toJson(modelList);
     }
 
+    public String findByRegex(String regex) {
+        return listToJson(repository.findByRegex(regex));
+    }
 
+    public String findByType(String type) {
+        return listToJson(repository.findByType(type));
+    }
+
+    public String findByName(String name) {
+        return listToJson(repository.findByName(name));
+    }
 
     public void deleteAll() {
         repository.deleteAll();
@@ -82,11 +91,8 @@ public class RepositoryFactory {
         return repository.count();
     }
 
-    public String getByName(String name){
-        return repository.findByName(name).toJson();
-    }
 
-    public String getById(String id){
+    public String findById(String id) {
 
         Model model = repository.findById(id);
         return model.toJson();

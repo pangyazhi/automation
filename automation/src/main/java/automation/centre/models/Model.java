@@ -39,7 +39,6 @@ public abstract class Model implements Cloneable {
 
     public static Object fromJson(String jsonString, Class klass) {
         Gson gson = new Gson();
-
         return gson.fromJson(jsonString, klass);
     }
 

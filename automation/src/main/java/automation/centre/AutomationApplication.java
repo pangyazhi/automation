@@ -17,11 +17,11 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @Configuration
 @SpringBootApplication
-public class AutomationApplication implements CommandLineRunner {
+class AutomationApplication implements CommandLineRunner {
 
-    static Logger logger = LoggerFactory.getLogger("Application");
+    private static final Logger logger = LoggerFactory.getLogger("Application");
     @Autowired
-    Repository repository;
+    private Repository repository;
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(AutomationApplication.class, args);
@@ -40,7 +40,7 @@ public class AutomationApplication implements CommandLineRunner {
             initData();
     }
 
-    void initData() {
+    private void initData() {
         RepositoryFactory.getInstance().deleteAll();
         Panel panel = new Panel();
         panel.setName("Panel");
