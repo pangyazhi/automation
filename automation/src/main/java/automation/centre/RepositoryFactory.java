@@ -41,10 +41,10 @@ public class RepositoryFactory {
     }
 
     public Model create(Model model) {
-        //model.set_id(UUID.randomUUID().toString());
         model.setCreatedAt(new Date());
         model.setDisabled(false);
         repository.save(model);
+        //below line is important, solved the clone issue
         return repository.findById(model.get_id());
         //return model;
     }
