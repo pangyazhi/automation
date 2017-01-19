@@ -1,5 +1,6 @@
 package automation.centre.models;
 
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.LinkedList;
@@ -9,8 +10,11 @@ import java.util.LinkedList;
  */
 @Document(collection = "models")
 public class TestEnvironment extends Model {
+    @DBRef
     private LinkedList<Variable> settings = new LinkedList<>();
+    @DBRef
     private TestClient host;
+    @DBRef
     private TestClient client;
 
     public TestEnvironment() {

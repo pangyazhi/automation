@@ -9,7 +9,16 @@ import java.util.LinkedList;
  */
 @Document(collection = "models")
 public class TestCase extends TestScript {
-    private LinkedList<Task> tasks;
+    private LinkedList<Task> tasks = new LinkedList<>();
+
+    public LinkedList<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(LinkedList<Task> tasks) {
+        this.tasks = tasks;
+    }
+
 
     public TestCase() {
         super();

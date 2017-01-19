@@ -49,17 +49,6 @@ public abstract class TestScript extends Model {
         this.handle = handle;
     }
 
-    public void addInputVariable(Variable inputVariable) {
-        this.inputVariables.add(inputVariable);
-    }
-
-    public void addOutputVariable(Variable outputVariable) {
-        this.outputVariables.add(outputVariable);
-    }
-
-    public void addSuite(TestScript script) {
-        this.subTestScripts.add(script);
-    }
 
     public boolean isRerunnable() {
         return isRerunnable;
@@ -70,4 +59,10 @@ public abstract class TestScript extends Model {
     }
 
     public abstract boolean run();
+
+    public boolean recusiveValidate(){
+        //TODO check all the test scripts in its child, if this!!! appear again, return false
+        // or when call json(), will cause overflow
+        return true;
+    }
 }

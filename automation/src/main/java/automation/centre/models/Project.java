@@ -28,6 +28,17 @@ public class Project extends Model {
     @DBRef
     private List<TestSuite> suites = new ArrayList<TestSuite>();
 
+    public List<Panel> getPanels() {
+        return panels;
+    }
+
+    public void setPanels(List<Panel> panels) {
+        this.panels = panels;
+    }
+
+    @DBRef
+    private List<Panel> panels = new ArrayList<>();
+
     public Project() {
         super();
         this.setType("Project");

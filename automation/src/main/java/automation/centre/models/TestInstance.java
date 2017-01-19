@@ -15,7 +15,7 @@ public class TestInstance extends Model {
     @DBRef
     private TestEnvironment environment;
     @DBRef
-    private LinkedList<TestResult> results;
+    private LinkedList<TestResult> results = new LinkedList<>();
     @DBRef
     private Task lastTask;
 

@@ -18,6 +18,9 @@ public class Loop extends TestScript {
         this.setType("Loop");
     }
 
+    @DBRef
+    private TestScript repeatAction;
+
     @Override
     public boolean run() {
         return false;
