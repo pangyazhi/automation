@@ -138,3 +138,5 @@ auto/node_modules/.bin/webpack
 auto/node_modules/.bin/webpack-dev-server
 
 *.xml
+
+*.class

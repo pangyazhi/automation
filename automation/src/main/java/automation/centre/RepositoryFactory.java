@@ -67,32 +67,32 @@ public class RepositoryFactory {
         return create(newModel);
     }
 
-    public String listToJson(List<Model> modelList){
+    private String listToJson(List<Model> modelList){
         return gson.toJson(modelList);
     }
 
-    public String findByRegex(String regex) {
+    String findByRegex(String regex) {
         return listToJson(repository.findByRegex(regex));
     }
 
-    public String findByType(String type) {
+    String findByType(String type) {
         return listToJson(repository.findByType(type));
     }
 
-    public String findByName(String name) {
+    String findByName(String name) {
         return listToJson(repository.findByName(name));
     }
 
-    public void deleteAll() {
+    void deleteAll() {
         repository.deleteAll();
     }
 
-    public long count() {
+    long count() {
         return repository.count();
     }
 
 
-    public String findById(String id) {
+    String findById(String id) {
 
         Model model = repository.findById(id);
         return model.toJson();
