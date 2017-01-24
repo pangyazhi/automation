@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Document(collection = "models")
 public class Condition extends TestScript {
+
     private String condition;
 
     public String getCondition() {
