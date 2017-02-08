@@ -53,6 +53,10 @@ class Repository {
         return template.find(q, Model.class, MODELS);
     }
 
+    List<Model> findAll(){
+        return template.findAll(Model.class, MODELS);
+    }
+
     long count(){
         return template.count(new Query().limit(1), Model.class, MODELS);
     }

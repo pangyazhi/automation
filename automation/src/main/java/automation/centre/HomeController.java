@@ -19,6 +19,14 @@ public class HomeController {
         return "{\"message\": \"OK\"}";
     }
 
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String findAll() {
+        return RepositoryFactory.getInstance().findAll();
+    }
+
+
     @RequestMapping(value = "/findByName/{name}", method = RequestMethod.GET)
     public @ResponseBody String findByName(@PathVariable String name){
         return RepositoryFactory.getInstance().findByName(name);
@@ -41,6 +49,13 @@ public class HomeController {
     @ResponseBody
     String findByType(@PathVariable String type) {
         return RepositoryFactory.getInstance().findByType(type);
+    }
+
+    @RequestMapping(value = "/findByRegexWithType/{type}/{regex}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String findByRegexWithType(@PathVariable String regex, @PathVariable String type ) {
+        return RepositoryFactory.getInstance().findByRegexWithType(regex, type);
     }
 
 //    @ExceptionHandler

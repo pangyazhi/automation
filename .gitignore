@@ -142,3 +142,12 @@ auto/node_modules/.bin/webpack-dev-server
 *.class
 
 *.class
+
+*.class
+
+auto/node_modules/*
+
+automation/target/*
+*.class
+
+*.class

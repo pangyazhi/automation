@@ -83,6 +83,14 @@ public class RepositoryFactory {
         return listToJson(repository.findByName(name));
     }
 
+    String findAll(){
+        return listToJson(repository.findAll());
+    }
+
+    String findByRegexWithType(String regex, String type){
+        return listToJson(repository.findByRegexWithType(regex, type));
+    }
+
     void deleteAll() {
         repository.deleteAll();
     }

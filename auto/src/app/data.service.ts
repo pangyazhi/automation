@@ -23,13 +23,13 @@ export class DataService {
     return this;
   }
 
-  getAll(): Object[]{
+  getAll(): Object[] {
     let data;
     this.http.get(this.url, this.options).subscribe(res => data = res.json());
     return data;
   }
 
-  getRegex(regex: String): Object[]{
+  getRegex(regex: String): Object[] {
     let data;
     this.http.get(this.url + 'regex/' + regex, this.options).subscribe(res => data = res.json());
     return data;
