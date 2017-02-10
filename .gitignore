@@ -151,3 +151,13 @@ automation/target/*
 *.class
 
 *.class
+
+automation/target/classes/automation/centre/models/Condition.class
+
+automation/target/classes/automation/centre/models/TestResult.class
+
+*.log
+
+*.class
+
+*.class

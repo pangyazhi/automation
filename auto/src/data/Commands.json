@@ -1,0 +1,98 @@
+[
+  {
+    "commands": [
+      {        
+        "routelink": "/generalsettings",        
+        "name": "General Settings",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      },
+      {        
+        "routelink": "/runningsettings",        
+        "name": "Running Settings",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      }
+    ],
+    
+    "name": "Settings",
+    "type": "Category",
+    "isDisabled": false,
+    "updatedAt": "Jan 19, 2017 2:15:04 PM",
+    "createdAt": "Jan 19, 2017 2:15:04 PM"
+  },
+  {
+    "commands": [
+      {        
+        "routelink": "/listallsuites",        
+        "name": "List All Test Suite",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      },
+      {        
+        "routelink": "/listallcases",        
+        "name": "List All Test Cases",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      }
+    ],
+    
+    "name": "Edit",
+    "type": "Category",
+    "isDisabled": false,
+    "updatedAt": "Jan 19, 2017 2:15:04 PM",
+    "createdAt": "Jan 19, 2017 2:15:04 PM"
+  },
+  {
+    "commands": [
+      {        
+        "routelink": "/listallrunninginstance",        
+        "name": "List All Running Instance",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      },
+      {        
+        "routelink": "/listallidleenvironment",        
+        "name": "List All Idle Environments",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      }
+    ],
+    
+    "name": "Monitor",
+    "type": "Category",
+    "isDisabled": false,
+    "updatedAt": "Jan 19, 2017 2:15:04 PM",
+    "createdAt": "Jan 19, 2017 2:15:04 PM"
+  },
+  {
+    "commands": [
+      {        
+        "routelink": "/listalluncheckedresults",        
+        "name": "List All Un-Analyse Results",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      },
+      {        
+        "routelink": "/listallresults",        
+        "name": "List All Results",
+        "type": "command",
+        "isDisabled": false,
+        "createdAt": "Jan 19, 2017 2:15:04 PM"
+      }
+    ],
+    
+    "name": "Analyse",
+    "type": "Category",
+    "isDisabled": false,
+    "updatedAt": "Jan 19, 2017 2:15:04 PM",
+    "createdAt": "Jan 19, 2017 2:15:04 PM"
+  }
+]
