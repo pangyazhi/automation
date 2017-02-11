@@ -161,3 +161,9 @@ automation/target/classes/automation/centre/models/TestResult.class
 *.class
 
 *.class
+
+*.class
+
+automation/target/classes/automation/centre/models/TestResult.class
+
+automation/target/classes/automation/centre/models/Condition.class
