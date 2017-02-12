@@ -9,10 +9,12 @@ import {MdButtonModule} from '@angular/material/button';
 import {MdIconModule} from '@angular/material/icon';
 import {MdIconRegistry} from '@angular/material/icon';
 import {DialogsModule} from './dialog/dialog.module';
+import { DraggableDirective } from './dnd/draggable.directive';
+import { DropTargetDirective } from './dnd/drop-target.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, DraggableDirective, DropTargetDirective
   ],
   imports: [
     BrowserModule,

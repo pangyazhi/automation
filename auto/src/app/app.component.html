@@ -30,7 +30,8 @@
     <span class="app-toolbar-filler"></span>
     <span routerlink="/" href="/" aria-disabled="false" class="md-button-wrapper">Testing Automation</span>
     <span class="app-toolbar-filler"></span>
-    <md-input class="app-input-section" placeholder="Commands" #commandBox tabindex="0">
+    <md-input class="app-input-section" placeholder="Commands" #commandBox tabindex="0" 
+    [appDraggable]="{data: commandBox.value}">
       <span md-prefix>
           <i class="material-icons" (click)="pushMessage(commandBox.value)" >subject</i>
           &nbsp;
@@ -64,7 +65,7 @@
     </md-card>
 
     <md-card class="app-input-section">
-      <md-input placeholder="First name"></md-input>
+      <md-input placeholder="First name"   appDropTarget (myDrop)="onDrop($event)"></md-input>
 
       <md-input #nickname placeholder="Nickname" maxlength="50">
         <md-hint align="end">

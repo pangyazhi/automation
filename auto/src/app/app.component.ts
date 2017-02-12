@@ -2,6 +2,8 @@ import { Component, Optional, ViewContainerRef } from '@angular/core';
 import { MdDialog, MdDialogRef, MdSnackBar, MdCheckbox } from '@angular/material';
 import { Http, Response } from '@angular/http';
 import { DialogsService } from './dialog/dialog.service';
+import { DraggableDirective } from './dnd/draggable.directive';
+import { DropTargetDirective } from './dnd/drop-target.directive';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +35,11 @@ export class AppComponent {
     // setInterval(() => {
     //   this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
     // }, 200);
+  }
+
+  onDrop(data: any){
+    console.log('drop data:' + data);
+    this.pushMessage(data);
   }
 
   pushMessage(message: string) {
