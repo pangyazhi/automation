@@ -4,6 +4,8 @@ import { Http, Response } from '@angular/http';
 import { DialogsService } from './dialog/dialog.service';
 import { DraggableDirective } from './dnd/draggable.directive';
 import { DropTargetDirective } from './dnd/drop-target.directive';
+import {Slide} from './carousel/slide.component';
+import {CarouselComponent, Direction} from  './carousel/carousel.component';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +24,30 @@ export class AppComponent {
   messages: Array<string> = [''];
 
 
+//The time to show the next photo
+    private NextPhotoInterval:number = 5000;
+    //Looping or not
+    private noLoopSlides:boolean = true;
+    //Photos
+    private slides:Array<any> = [];
+
+   
+
+    private addNewSlide() {
+         this.slides.push(
+           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg' style='width:100%'>",
+           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car2.jpg' style='width:100%'>",
+           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car3.jpg' style='width:100%'>",
+           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car4.jpg' style='width:100%'>",
+           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car5.jpg' style='width:100%'>",
+           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car6.jpg' style='width:100%'>"
+          
+        );
+    }
+
+    private removeLastSlide() {
+        this.slides.pop();
+    }
   constructor(private http: Http,
     private dialogsService: DialogsService, private viewContainerRef: ViewContainerRef,
     private _snackbar: MdSnackBar) {
@@ -35,6 +61,7 @@ export class AppComponent {
     // setInterval(() => {
     //   this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
     // }, 200);
+    this.addNewSlide();
   }
 
   onDrop(data: any){
@@ -72,9 +99,6 @@ export class AppComponent {
     }
 
 
-  }
-  showSnackbar() {
-    this._snackbar.open('YUM SNACKS', 'CHEW');
   }
 }
 

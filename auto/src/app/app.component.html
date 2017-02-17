@@ -1,43 +1,39 @@
-<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
+<md-sidenav-layout>
+  <md-toolbar color="primary">
+    <a class="md-button-wrapper" style="text-decoration: none" md-button aria-disabled="false" href="/">
+      <h3>Testing Automation</h3>
+    </a>
+    <button md-button (click)="sidenav.toggle()" tabindex="0">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    <md-toolbar-row>
+      <md-input class="app-input-section" placeholder="Commands" #commandBox tabindex="0" [appDraggable]="{data: commandBox.value}">
+        <span md-prefix>
+          <i class="material-icons" (click)="openDialogValue(commandBox.value)" >subject</i>
+          &nbsp;
+        </span>
+      </md-input>
+    </md-toolbar-row>
+  </md-toolbar>
 
   <md-sidenav #sidenav mode="side" align="start" class="app-sidenav">
     <md-toolbar color="primary">
       <button md-button (click)="sidenav.toggle()">
-    Common Commands
-    </button>
+        Common Commands
+      </button>
     </md-toolbar>
-
-    <ul md-subheader *ngFor="let category of commands">
-
+    <ul md-subheader *ngFor="let category of commands" collapse>
       <h4>{{category.name}}</h4>
       <!--<p md-line class="demo-secondary-text">{{category.type}}</p>-->
-
-      <a *ngFor="let cmd of category.commands" md-menu-item aria-disabled="false" href={{cmd.routelink}}>
-        
+      <div>
+        <a *ngFor="let cmd of category.commands" md-menu-item aria-disabled="false" href={{cmd.routelink}}>
               {{cmd.name}}
-              <!--<p>{{cmd.createdAt}}</p>-->
-             
       </a>
-      <md-divider></md-divider>
+        <md-divider></md-divider>
+      </div>
+
     </ul>
-
   </md-sidenav>
-
-  <md-toolbar class="fixed-toolbar md-toolbar-tools" color="primary">
-    <button md-button (click)="sidenav.toggle()" tabindex="0">
-      <i class="material-icons app-toolbar-menu">menu</i>
-    </button>
-    <span class="app-toolbar-filler"></span>
-    <span class="md-button-wrapper">Testing Automation</span>
-    <span class="app-toolbar-filler"></span>
-    <md-input class="app-input-section" placeholder="Commands" #commandBox tabindex="0" 
-    [appDraggable]="{data: commandBox.value}">
-      <span md-prefix>
-          <i class="material-icons" (click)="openDialogValue(commandBox.value)" >subject</i>
-          &nbsp;
-        </span>
-    </md-input>
-  </md-toolbar>
 
   <div class="app-content">
 
@@ -65,7 +61,7 @@
     </md-card>
 
     <md-card class="app-input-section">
-      <md-input placeholder="First name"   appDropTarget (myDrop)="onDrop($event)"></md-input>
+      <md-input placeholder="First name" appDropTarget (myDrop)="onDrop($event)"></md-input>
 
       <md-input #nickname placeholder="Nickname" maxlength="50">
         <md-hint align="end">
@@ -127,8 +123,16 @@
     <md-card>
       <p>Last dialog result: {{lastDialogResult}}</p>
       <button md-raised-button (click)="openDialog()">DIALOG</button>
-      <button md-raised-button (click)="showSnackbar()">SNACKBAR</button>
+
     </md-card>
+
+  </div>
+
+  <div class="row">
+    <carousel [Slides]="slides">
+
+    </carousel>
+
 
   </div>
 

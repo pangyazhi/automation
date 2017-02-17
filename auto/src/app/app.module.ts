@@ -11,10 +11,13 @@ import {MdIconRegistry} from '@angular/material/icon';
 import {DialogsModule} from './dialog/dialog.module';
 import { DraggableDirective } from './dnd/draggable.directive';
 import { DropTargetDirective } from './dnd/drop-target.directive';
+import { CollapseDirective } from './collapse';
+import {Slide} from './carousel/slide.component';
+import {CarouselComponent, Direction} from  './carousel/carousel.component';
 
 @NgModule({
   declarations: [
-    AppComponent, DraggableDirective, DropTargetDirective
+    AppComponent, DraggableDirective, DropTargetDirective, CollapseDirective, Slide, CarouselComponent
   ],
   imports: [
     BrowserModule,
