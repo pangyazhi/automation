@@ -1,4 +1,4 @@
-<md-sidenav-layout>
+<md-sidenav-container>
   <md-toolbar color="primary">
     <a class="md-button-wrapper" style="text-decoration: none" md-button aria-disabled="false" href="/">
       <h3>Testing Automation</h3>
@@ -7,12 +7,15 @@
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
     <md-toolbar-row>
-      <md-input class="app-input-section" placeholder="Commands" #commandBox tabindex="0" [appDraggable]="{data: commandBox.value}">
+      <md-input-container>
+      <input mdInput class="app-input-section" placeholder="Commands" #commandBox tabindex="0" [appDraggable]="{data: commandBox.value}" 
+        (keyup.enter)="openDialogValue(commandBox.value)">
         <span md-prefix>
           <i class="material-icons" (click)="openDialogValue(commandBox.value)" >subject</i>
           &nbsp;
         </span>
-      </md-input>
+      <!--</input>-->
+      </md-input-container>
     </md-toolbar-row>
   </md-toolbar>
 
@@ -61,26 +64,32 @@
     </md-card>
 
     <md-card class="app-input-section">
-      <md-input placeholder="First name" appDropTarget (myDrop)="onDrop($event)"></md-input>
-
-      <md-input #nickname placeholder="Nickname" maxlength="50">
+      <md-input-container>
+      <input mdInput placeholder="First name" appDropTarget (myDrop)="onDrop($event)">
+      <!--</input>-->
+      </md-input-container>
+      <md-input-container>
+      <input mdInput #nickname placeholder="Nickname" maxlength="50">
         <md-hint align="end">
           {{nickname.characterCount}} / 50
         </md-hint>
-      </md-input>
-
-      <md-input>
+      <!--</input>-->
+      </md-input-container>
+<md-input-container>
+      <input mdInput>
         <md-placeholder>
           <i class="material-icons app-input-icon">android</i> Favorite phone
         </md-placeholder>
-      </md-input>
-
-      <md-input placeholder="Motorcycle model">
+      <!--</input>-->
+</md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="Motorcycle model">
         <span md-prefix>
           <i class="material-icons app-input-icon">motorcycle</i>
           &nbsp;
         </span>
-      </md-input>
+        <!--</input>-->
+      </md-input-container>
     </md-card>
 
     <md-card>
@@ -125,15 +134,17 @@
       <button md-raised-button (click)="openDialog()">DIALOG</button>
 
     </md-card>
-
-  </div>
-
-  <div class="row">
-    <carousel [Slides]="slides">
+    <md-card>
+ <carousel [Slides]="slides">
 
     </carousel>
-
-
+    </md-card>
   </div>
 
-</md-sidenav-layout>
+ 
+   
+
+
+
+
+</md-sidenav-container>

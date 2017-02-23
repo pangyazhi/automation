@@ -4,8 +4,7 @@ import { Http, Response } from '@angular/http';
 import { DialogsService } from './dialog/dialog.service';
 import { DraggableDirective } from './dnd/draggable.directive';
 import { DropTargetDirective } from './dnd/drop-target.directive';
-import {Slide} from './carousel/slide.component';
-import {CarouselComponent, Direction} from  './carousel/carousel.component';
+import { CarouselComponent  } from './carousel/carousel.component';
 
 @Component({
   selector: 'app-root',
@@ -24,30 +23,29 @@ export class AppComponent {
   messages: Array<string> = [''];
 
 
-//The time to show the next photo
-    private NextPhotoInterval:number = 5000;
-    //Looping or not
-    private noLoopSlides:boolean = true;
-    //Photos
-    private slides:Array<any> = [];
+  //The time to show the next photo
+  private NextPhotoInterval: number = 5000;
+  //Looping or not
+  private noLoopSlides: boolean = true;
+  //Photos
+  private slides: Array<any> = [];
 
-   
 
-    private addNewSlide() {
-         this.slides.push(
-           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg' style='width:100%'>",
-           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car2.jpg' style='width:100%'>",
-           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car3.jpg' style='width:100%'>",
-           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car4.jpg' style='width:100%'>",
-           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car5.jpg' style='width:100%'>",
-           "<img class='mySlides' src='http://www.angulartypescript.com/wp-content/uploads/2016/03/car6.jpg' style='width:100%'>"
-          
-        );
-    }
 
-    private removeLastSlide() {
-        this.slides.pop();
-    }
+  private addNewSlide() {
+    this.slides.push(
+      { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg', text: 'BMW 1' },
+      { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car2.jpg', text: 'BMW 2' },
+      { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car3.jpg', text: 'BMW 3' },
+      { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car4.jpg', text: 'BMW 4' },
+      { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car5.jpg', text: 'BMW 5' },
+      { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car6.jpg', text: 'BMW 6' }
+    );
+  }
+
+  private removeLastSlide() {
+    this.slides.pop();
+  }
   constructor(private http: Http,
     private dialogsService: DialogsService, private viewContainerRef: ViewContainerRef,
     private _snackbar: MdSnackBar) {
@@ -56,7 +54,8 @@ export class AppComponent {
       .subscribe((response: Response) => this.commands = response.json());
     setInterval(() => {
       let msg = this.messages.pop();
-      this.showMessage(msg); }, 5000);
+      this.showMessage(msg);
+    }, 5000);
     // Update the value for the progress-bar on an interval.
     // setInterval(() => {
     //   this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
@@ -64,7 +63,7 @@ export class AppComponent {
     this.addNewSlide();
   }
 
-  onDrop(data: any){
+  onDrop(data: any) {
     console.log('drop data:' + data);
     this.pushMessage(data);
   }

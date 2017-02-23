@@ -2,7 +2,7 @@ import { Directive, Input, HostBinding, HostListener, ElementRef } from '@angula
 @Directive({ selector: '[collapse]' })
 export class CollapseDirective {
 
-    toShow = true;
+    private toShow = true;
 
     @HostListener('click', ['$event'])
     onclick() {

@@ -12,12 +12,11 @@ import {DialogsModule} from './dialog/dialog.module';
 import { DraggableDirective } from './dnd/draggable.directive';
 import { DropTargetDirective } from './dnd/drop-target.directive';
 import { CollapseDirective } from './collapse';
-import {Slide} from './carousel/slide.component';
-import {CarouselComponent, Direction} from  './carousel/carousel.component';
+import {CarouselComponent} from  './carousel/carousel.component';
 
 @NgModule({
   declarations: [
-    AppComponent, DraggableDirective, DropTargetDirective, CollapseDirective, Slide, CarouselComponent
+    AppComponent, DraggableDirective, DropTargetDirective, CollapseDirective, CarouselComponent
   ],
   imports: [
     BrowserModule,
