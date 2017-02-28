@@ -1,20 +1,8 @@
 import { Component, OnDestroy, Input, ElementRef } from '@angular/core';
-import { NgFor } from '@angular/common';
 
 @Component({
     selector: 'carousel',
-    template: `
-    <md-card style="width: auto">        
-            <a class="w3-btn-floating w3-hover-dark-grey w3-display-left" (click)="prev()">&#10094;</a>
-            <a class="w3-btn-floating w3-hover-dark-grey w3-display-right" (click)="next()">&#10095;</a>        
-         <div class="w3-center carousel" *ngFor="let slidez of slides" style="display: none">
-            <img src={{slidez.image}} />
-            <div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
-                {{slidez.text}}
-            </div>
-         </div>      
-    </md-card>
-  `
+    templateUrl: 'carousel.component.html'
 })
 export class CarouselComponent {
     private slides: Array<any> = [];

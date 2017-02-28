@@ -2,22 +2,30 @@ import { Directive, Input, HostBinding, HostListener, ElementRef } from '@angula
 @Directive({ selector: '[collapse]' })
 export class CollapseDirective {
 
-    private toShow = true;
+    private toShow = false;
 
-    @HostListener('click', ['$event'])
+    @HostListener('dblclick', ['$event'])
     onclick() {
-        let div = this.el.nativeElement.querySelector('div');
-        if (this.toShow) {
-            this.toShow = false;
-            div.style.display = 'none';
-        } else {
-            this.toShow = true;
-            div.style.display = 'block';
+        let div = this.el.nativeElement.querySelector('.collapse');
+        if (div) {
+            if (this.toShow) {
+                this.toShow = false;
+                div.style.display = 'none';
+            } else {
+                this.toShow = true;
+                div.style.display = 'block';
+            }
         }
+
+    }
+
+    ngAfterViewInit() {
+        let div = this.el.nativeElement.querySelector('.collapse');
+        div.style.display = 'none';
     }
 
     constructor(public el: ElementRef) {
-        // this.measureHeight();
+
     }
 
 }

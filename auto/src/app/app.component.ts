@@ -5,6 +5,7 @@ import { DialogsService } from './dialog/dialog.service';
 import { DraggableDirective } from './dnd/draggable.directive';
 import { DropTargetDirective } from './dnd/drop-target.directive';
 import { CarouselComponent  } from './carousel/carousel.component';
+import { SimpleCardComponent } from './ui/simpleCard.component';
 
 @Component({
   selector: 'app-root',
@@ -12,29 +13,30 @@ import { CarouselComponent  } from './carousel/carousel.component';
 })
 
 export class AppComponent {
-  isDarkTheme: boolean = false;
-  lastDialogResult: boolean = false;
-
+  isDarkTheme = false;
+  lastDialogResult = false;
+simplecarddata: any;
   commands: any[];
+  objects: any[];
   search = '';
   check = false;
   indeterminate = false;
   disabled = false;
   messages: Array<string> = [''];
+// info: any[];
 
-
-  //The time to show the next photo
-  private NextPhotoInterval: number = 5000;
-  //Looping or not
-  private noLoopSlides: boolean = true;
-  //Photos
+  // The time to show the next photo
+  private NextPhotoInterval = 5000;
+  // Looping or not
+  private noLoopSlides = true;
+  // Photos
   private slides: Array<any> = [];
 
 
 
   private addNewSlide() {
     this.slides.push(
-      { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car1.jpg', text: 'BMW 1' },
+      { description: 'THis is a nonsense description.', text: 'BMW 1' },
       { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car2.jpg', text: 'BMW 2' },
       { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car3.jpg', text: 'BMW 3' },
       { image: 'http://www.angulartypescript.com/wp-content/uploads/2016/03/car4.jpg', text: 'BMW 4' },
@@ -52,16 +54,32 @@ export class AppComponent {
 
     this.http.request('../data/Commands.json')
       .subscribe((response: Response) => this.commands = response.json());
+    this.http.request('../data/findAll.json')
+      .subscribe((response: Response) => this.objects = response.json());
+      //   this.http.request('https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=4744')
+      // .subscribe((response: Response ) => this.info = response.json());
+      // this.renewBusInfo();
     setInterval(() => {
       let msg = this.messages.pop();
       this.showMessage(msg);
+      //this.renewBusInfo();
     }, 5000);
     // Update the value for the progress-bar on an interval.
     // setInterval(() => {
     //   this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
     // }, 200);
     this.addNewSlide();
+    
   }
+
+  // renewBusInfo(){
+  //   var msg: any[];
+  //       this.http.request('https://data.dublinked.ie/cgi-bin/rtpi/realtimebusinformation?stopid=4744')
+  //     .subscribe((response: Response ) => msg = response.json().main);
+  //     this.info = msg;
+  //     console.log("raw: "+msg);
+  //     console.log("info: "+this.info);
+  // }
 
   onDrop(data: any) {
     console.log('drop data:' + data);
@@ -85,6 +103,10 @@ export class AppComponent {
         this.showMessage(value);
         this.lastDialogResult = result;
       });
+  }
+
+  clearCommandBox() {
+    
   }
 
   showMessage(message: string) {
