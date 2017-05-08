@@ -30,5 +30,6 @@ public class MongoData {
 
     public void insert (String json){
 
+        assert json.contains("id");
     }
 }
