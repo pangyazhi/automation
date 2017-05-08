@@ -8,7 +8,7 @@ import com.mongodb.client.MongoDatabase;
  * Created by jien.huang on 08/05/2017.
  */
 public class MongoData {
-
+//maybe we need a metadata collection later
     private final MongoCollection collection;
 
     private MongoData(){
