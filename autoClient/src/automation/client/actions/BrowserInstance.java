@@ -1,6 +1,6 @@
-package com.ibm.ie.spm.automation.client.actions;
+package automation.client.actions;
 
-import com.ibm.ie.spm.automation.client.Config;
+import automation.client.Config;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

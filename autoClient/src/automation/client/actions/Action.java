@@ -1,4 +1,4 @@
-package com.ibm.ie.spm.automation.client.actions;
+package automation.client.actions;
 
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;

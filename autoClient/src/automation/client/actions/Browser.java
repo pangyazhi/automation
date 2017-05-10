@@ -1,4 +1,4 @@
-package com.ibm.ie.spm.automation.client.actions;
+package automation.client.actions;
 
 import com.google.gson.JsonObject;
 import com.sun.istack.internal.NotNull;
@@ -6,10 +6,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 /**
  * Created by jien.huang on 20/10/2016.
@@ -33,15 +34,27 @@ public class Browser {
     private static List<WebElement> find(JsonObject ui, long timeOut) {
         List<WebElement> found = null;
 
-        By way = findBy(ui);
+        final By way = findBy(ui);
         if(way!=null) {
 
             WebDriver driver = BrowserInstance.getInstance().get();
-            WebDriverWait wait = new WebDriverWait(driver, timeOut * 1000);
 
-            wait.until(ExpectedConditions.visibilityOf(way.findElement(driver)));
+            FluentWait wait = new FluentWait<WebDriver>(driver);
+            wait.pollingEvery(1, TimeUnit.SECONDS);
+            wait.withTimeout(timeOut, TimeUnit.SECONDS);
+            Function<WebDriver, Boolean> function = new Function<WebDriver, Boolean>() {
 
-            found = driver.findElements(way);
+                public Boolean apply(WebDriver webDriver) {
+                    return webDriver.findElements(way) != null;
+                }
+            };
+            wait.until(function);
+
+//            WebDriverWait wait = new WebDriverWait(driver, timeOut * 1000);
+
+//            wait.until(ExpectedConditions.presenceOfElementLocated(way));
+//
+//            found = driver.findElements(way);
         }
 
         return found;

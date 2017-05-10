@@ -1,6 +1,6 @@
-package com.ibm.ie.spm.automation.client.test;
+package automation.client.test;
 
-import com.ibm.ie.spm.automation.client.Config;
+import automation.client.Config;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

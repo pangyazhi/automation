@@ -1,9 +1,9 @@
 [
-  {"action":"com.ibm.ie.spm.automation.client.actions.StartBrowser", "id":"StartBrowser" },
-  {"action":"com.ibm.ie.spm.automation.client.actions.CloseBrowser", "id":"CloseBrowser" },
-  {"action":"com.ibm.ie.spm.automation.client.actions.Enter", "id":"EnterText", "ui":{"way":"id","data":"input__text"} },
+  {"action":"automation.client.actions.StartBrowser", "id":"StartBrowser" },
+  {"action":"automation.client.actions.CloseBrowser", "id":"CloseBrowser" },
+  {"action":"automation.client.actions.Enter", "data":"5", "id":"EnterText", "ui":"{\"way\":\"id\",\"data\":\"input__text\"}" },
 
-  {"action":"com.ibm.ie.spm.automation.client.actions.Wait", "data":"5", "id":"Wait5Seconds" }
+  {"action":"automation.client.actions.Wait", "data":"5", "id":"Wait5Seconds" }
 
 ]
 

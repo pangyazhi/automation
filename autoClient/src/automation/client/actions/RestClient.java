@@ -1,4 +1,4 @@
-package com.ibm.ie.spm.automation.client;
+package automation.client;
 
 
 

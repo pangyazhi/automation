@@ -1,12 +1,10 @@
-package com.ibm.ie.spm.automation.client;
+package automation.client.actions;
 
 import com.google.common.collect.Queues;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.SynchronousQueue;
 
@@ -94,11 +92,7 @@ public class Main {
 
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("cheese!");
-            }
-        });
+
 
         // Should see: "cheese! - Google Search"
         System.out.println("Page title is: " + driver.getTitle());

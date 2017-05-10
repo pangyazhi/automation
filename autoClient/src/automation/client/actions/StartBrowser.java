@@ -1,4 +1,4 @@
-package com.ibm.ie.spm.automation.client.actions;
+package automation.client.actions;
 
 import org.openqa.selenium.WebElement;
 
@@ -8,6 +8,11 @@ import org.openqa.selenium.WebElement;
 public class StartBrowser extends Action {
     public WebElement findTestObject() {
         return null;
+    }
+
+    @Override
+    public void deal(){
+        handle(null);
     }
 
     protected void handle(WebElement testObject) {

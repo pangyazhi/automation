@@ -1,4 +1,4 @@
-package com.ibm.ie.spm.automation.client.actions;
+package automation.client.actions;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
