@@ -1,5 +1,6 @@
-package automation.datacachelayer;
+package automation.datacachelayer.test;
 
+import automation.datacachelayer.MongoData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -24,7 +25,7 @@ public class MongoDataTest {
         MongoData.get_instance().deleteAll();
     }
 
-    @org.testng.annotations.Test
+    @Test
     public void testGet_instance() throws Exception {
         Assert.assertNotNull(MongoData.get_instance());
     }

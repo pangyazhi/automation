@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>dataLayer</groupId>
-    <artifactId>data-cache-layer</artifactId>
+    <groupId>autoServices</groupId>
+    <artifactId>autoServices</artifactId>
     <version>1.0</version>
 
 
