@@ -47,6 +47,11 @@ public class MongoDataTest {
         found = MongoData.get_instance().find( "type=t.*","data=d.+");
         logger.info(found);
         Assert.assertTrue(found.contains("datum") && found.contains("test"));
+
+        found = MongoData.get_instance().find( "type=test","data=data");
+        logger.info(found);
+        Assert.assertTrue(found.contains("0010010000001"));
+        Assert.assertFalse(found.contains("0020020000002"));
         MongoData.get_instance().update("{ '_id' : '0010010000001', 'type' : 'case', data : 'suite'  }");
         found = MongoData.get_instance().findById("0010010000001");
         logger.info(found);
