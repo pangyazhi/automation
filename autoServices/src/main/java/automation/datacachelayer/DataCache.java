@@ -70,6 +70,7 @@ public class DataCache {
             return instance;
         instance = MongoData.get_instance().findById(id);
         if (StringUtils.isNotEmpty(instance) && !instance.equalsIgnoreCase("null")){
+            //very hard to reproduce this situation, so leave it uncovered by unit test.
             instanceCache.put(id, instance);
         }
         if (instance.equalsIgnoreCase("null"))

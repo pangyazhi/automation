@@ -127,7 +127,7 @@ public class ActionFactoryTest {
 
     @AfterMethod
     public void tearDown() throws Exception {
-
+        BrowserInstance.getInstance().close();
     }
 
 }

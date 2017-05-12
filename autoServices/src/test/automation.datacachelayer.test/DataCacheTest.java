@@ -2,10 +2,13 @@ package automation.datacachelayer.test;
 
 import automation.datacachelayer.DataCache;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
 
 /**
  * Created by jien.huang on 09/05/2017.
@@ -14,7 +17,7 @@ public class DataCacheTest {
 
     Logger logger = LoggerFactory.getLogger("test");
 
-    @org.testng.annotations.BeforeMethod
+    @Before
     public void setUp() throws Exception {
         DataCache.get_instance().deleteAll();
         DataCache.get_instance().insert("{ '_id' : '001001000000A', 'type' : 'test', data : 'data1'  }");
@@ -25,7 +28,7 @@ public class DataCacheTest {
 
     }
 
-    @org.testng.annotations.AfterMethod
+    @After
     public void tearDown() throws Exception {
         //clear all data
         DataCache.get_instance().deleteAll();
@@ -45,7 +48,11 @@ public class DataCacheTest {
 
     @Test
     public void testGet() throws Exception {
-        String found = DataCache.get_instance().get("001001000000E");
+        String found = DataCache.get_instance().get("001001000000F");
+        Assert.assertNull(found);
+
+
+        found = DataCache.get_instance().get("001001000000E");
         logger.info(found);
         Assert.assertTrue(found.contains("data5"));
     }

@@ -1,10 +1,13 @@
 package automation.datacachelayer.test;
 
 import automation.datacachelayer.MongoData;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
 
 /**
  * Created by jien.huang on 08/05/2017.
@@ -13,13 +16,13 @@ public class MongoDataTest {
 
     Logger logger = LoggerFactory.getLogger("test");
 
-    @org.testng.annotations.BeforeMethod
+    @Before
     public void setUp() throws Exception {
         //clear all data
         MongoData.get_instance().deleteAll();
     }
 
-    @org.testng.annotations.AfterMethod
+    @After
     public void tearDown() throws Exception {
         //clear all data
         MongoData.get_instance().deleteAll();

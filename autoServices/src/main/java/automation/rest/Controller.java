@@ -15,7 +15,7 @@ import java.util.Map;
 @RestController
 public class Controller {
 
-    Gson gson = new Gson();
+    final Gson gson = new Gson();
 
     /**
      * Test if the service still alive
@@ -30,8 +30,8 @@ public class Controller {
 
     //PUT update
     @RequestMapping(value= "/update", method = RequestMethod.PUT)
-    public @ResponseBody String update(WebRequest webReqest) {
-        Map<String, String[]> params = webReqest.getParameterMap();
+    public @ResponseBody String update(WebRequest webRequest) {
+        Map<String, String[]> params = webRequest.getParameterMap();
         return DataCache.get_instance().update(gson.toJson(params));
     }
 
@@ -49,8 +49,8 @@ public class Controller {
     }
     //GET search ( accept regex )
     @RequestMapping(value= "/search", method = RequestMethod.GET)
-    public @ResponseBody String search(WebRequest webReqest){
-        Map<String, String[]> params = webReqest.getParameterMap();
+    public @ResponseBody String search(WebRequest webRequest){
+        Map<String, String[]> params = webRequest.getParameterMap();
         int size = params.size();
         String[] parameters = new String[size];
         int count = 0;
