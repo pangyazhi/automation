@@ -1,0 +1,54 @@
+package automation.client.actions;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * Created by jien.huang on 18/10/2016.
+ */
+
+/**
+ *  An example of action
+ *  {"action":"click","data":"", "ui":"{"way":"id", "data":"q"}"}
+ */
+public abstract class Action {
+    Logger logger = LoggerFactory.getLogger("Action");
+    public String data;
+    public String action;
+    public String ui;
+    Gson gson = new Gson();
+
+    public abstract WebElement findTestObject();
+
+    public void deal(){
+        WebElement testObject = findTestObject();
+        handle(testObject);
+    }
+
+    protected abstract void handle (WebElement testObject);
+
+    public void clear() {
+    }
+
+    public Object NotExpectedFindUIObject(){
+        long timeOut = Long.parseLong(String.valueOf(Config.getInstance().get("not.expected.timeout","3")));
+        return findGuiTestObject(timeOut);
+    }
+    public WebElement findUIObject() {
+        long timeOut = Long.parseLong(String.valueOf(Config.getInstance().get("implicitly.timeout","30")));
+        return findGuiTestObject(timeOut);
+    }
+
+    private WebElement findGuiTestObject(long timeOut) {
+
+        if(this.ui==null){
+            logger.warn("No UIObject element in the command, don't know how to find the target!");
+            return null;
+        }
+        JsonObject uiObject = gson.fromJson(this.ui, JsonObject.class);
+        return Browser.findTestObject(uiObject,timeOut);
+    }
+}
