@@ -50,7 +50,7 @@ public class MongoData {
         assert dbObject.get("type")!=null;
         dbObject.append("updatedAt", new Date());
         BasicDBObject query = new BasicDBObject("_id", id);
-        data.findOneAndReplace(query, dbObject);
+        Object doc = data.findOneAndReplace(query, dbObject);
         return findById(id);
     }
 

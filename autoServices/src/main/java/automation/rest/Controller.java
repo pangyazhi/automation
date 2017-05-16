@@ -2,7 +2,6 @@ package automation.rest;
 
 import automation.datacachelayer.DataCache;
 import com.google.gson.Gson;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
@@ -28,23 +27,30 @@ public class Controller {
         return gson.toJson(ret);
     }
 
-    //PUT update
-    @RequestMapping(value= "/update", method = RequestMethod.PUT)
-    public @ResponseBody String update(WebRequest webRequest) {
-        Map<String, String[]> params = webRequest.getParameterMap();
-        return DataCache.get_instance().update(gson.toJson(params));
+    //put insert
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public @ResponseBody String add(@RequestBody String requestBody){
+        return DataCache.get_instance().insert(requestBody);
     }
 
+    //PUT update
+    @RequestMapping(value= "/update", method = RequestMethod.POST)
+    public @ResponseBody String update(@RequestBody String requestBody) {
+        return DataCache.get_instance().update(requestBody);
+    }
+
+
     //DELETE delete
-    @RequestMapping(value= "/delete", method = RequestMethod.DELETE)
-    public @ResponseBody String delete(@RequestParam String id){
+    @RequestMapping(value= "/delete/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody String delete(@PathVariable String id){
         DataCache.get_instance().delete(id);
-        //TODO ??????
-        return "OK";
+        HashMap<String, String> ret = new HashMap<>();
+        ret.put("message", "OK");
+        return gson.toJson(ret);
     }
     //GET get by id
-    @RequestMapping(value= "/id", method = RequestMethod.DELETE)
-    public @ResponseBody String id(@RequestParam String id){
+    @RequestMapping(value= "/id/{id}", method = RequestMethod.GET)
+    public @ResponseBody String id(@PathVariable String id){
         return DataCache.get_instance().get(id);
     }
     //GET search ( accept regex )
@@ -56,18 +62,7 @@ public class Controller {
         int count = 0;
         for(String key: params.keySet()){
             String[] value = params.get(key);
-            String realValue = "";
-            if(value.length > 1){
-                parameters[count] = key + "=(";
-                for(int j = 0 ;j <value.length -1; j++){
-                    parameters[count] += value[j] + "|";
-                }
-                parameters[count] = StringUtils.removeEnd(parameters[count],"|");
-                parameters[count] += ")";
-
-            }else{
-                parameters[count] = key+"="+value[0];
-            }
+            parameters[count] = key+"="+value[0];
             count ++;
         }
 

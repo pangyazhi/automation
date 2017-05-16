@@ -55,11 +55,13 @@ public class DataCache {
         String retList = "[";
         for(Map id: idList){
             retList +="{'"+id.get("_id")+"'},";
+            //this get put things into cache
             get(id.get("_id").toString());
         }
-        retList += "]";
         if (retList.length()>1)
             retList = StringUtils.removeEnd(retList, ",");
+        retList += "]";
+
         searchCache.putSafe(key, retList);
         return retList;
     }
