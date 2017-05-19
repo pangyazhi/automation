@@ -1,10 +1,45 @@
 [
-  {"action":"automation.client.actions.StartBrowser", "id":"StartBrowser" },
-  {"action":"automation.client.actions.CloseBrowser", "id":"CloseBrowser" },
-  {"action":"automation.client.actions.Enter", "data":"5", "id":"EnterText", "ui":"{\"way\":\"id\",\"data\":\"input__text\"}" },
-
-  {"action":"automation.client.actions.Wait", "data":"5", "id":"Wait5Seconds" }
-
+  {
+    "action": "automation.client.actions.StartBrowser",
+    "id": "StartBrowser"
+  },
+  {
+    "action": "automation.client.actions.CloseBrowser",
+    "id": "CloseBrowser"
+  },
+  {
+    "action": "automation.client.actions.Enter",
+    "data": "5",
+    "id": "EnterText",
+    "ui": "{\"way\":\"id\",\"data\":\"input__text\"}"
+  },
+  {
+    "action": "automation.client.actions.Check",
+    "data": "yes",
+    "id": "Check",
+    "ui": "{\"way\":\"id\",\"data\":\"checkbox2\"}"
+  },
+  {
+    "action": "automation.client.actions.Click",
+    "id": "Click",
+    "ui": "{\"way\":\"value\",\"data\":\"<input type=submit>\"}"
+  },
+  {
+    "action": "automation.client.actions.Select",
+    "id": "Select",
+    "data": "Option Two",
+    "ui": "{\"way\":\"id\",\"data\":\"select\"}"
+  },
+  {
+    "action": "automation.client.actions.Command",
+    "id": "Command",
+    "data": "dir /s"
+  },
+  {
+    "action": "automation.client.actions.Wait",
+    "data": "5",
+    "id": "Wait5Seconds"
+  }
 ]
 
 

@@ -1,3 +1,13 @@
-<h1>
-  {{title}}
-</h1>
+<div class="overflow-hidden content-margin content-padding" style="width: 50%" >
+
+  <form [formGroup]="formGroup" class="ui-grid ui-grid-responsive">
+    <dynamic *ngFor="let controlModel of formModel" class="form-row"
+            [group] = "formGroup" [model]="controlModel" (change)=onChange($event) >
+
+            <ng-template modelId="primeSelect" type="itemTemplate" let-item>
+              <p>{{ item.label}}</p>
+            </ng-template>
+    </dynamic>
+  </form>
+
+</div>

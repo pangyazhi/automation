@@ -7,10 +7,11 @@ import org.openqa.selenium.WebElement;
  */
 public class Click extends Action {
     public WebElement findTestObject() {
-        return null;
+        return findUIObject();
     }
 
     protected void handle(WebElement testObject) {
-
+        assert testObject!=null;
+        testObject.click();
     }
 }

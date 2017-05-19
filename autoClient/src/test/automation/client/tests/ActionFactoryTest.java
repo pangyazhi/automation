@@ -45,18 +45,18 @@ public class ActionFactoryTest {
 
     @Test
     public void testCheck() {
-        String message = "{'action':'automation.client.actions.Check','data':'5' }";
+        String message = getTestData("Check");
         Check action = (Check) ActionFactory.getAction(message);
         action.deal();
-        Assert.assertEquals(action.data, "5");
+
     }
 
     @Test
     public void testClick() {
-        String message = "{'action':'automation.client.actions.Click','data':'5' }";
+        String message = getTestData("Click");
         Click action = (Click) ActionFactory.getAction(message);
         action.deal();
-        Assert.assertEquals(action.data, "5");
+
     }
 
     @Test
@@ -69,10 +69,10 @@ public class ActionFactoryTest {
 
     @Test
     public void testSelect() {
-        String message = "{'action':'automation.client.actions.Select','data':'5' }";
+        String message = getTestData("Select");
         Select action = (Select) ActionFactory.getAction(message);
         action.deal();
-        Assert.assertEquals(action.data, "5");
+
     }
 
     @Test

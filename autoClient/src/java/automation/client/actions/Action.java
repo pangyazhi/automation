@@ -2,9 +2,16 @@ package automation.client.actions;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 /**
  * Created by jien.huang on 18/10/2016.
@@ -50,5 +57,26 @@ public abstract class Action {
         }
         JsonObject uiObject = gson.fromJson(this.ui, JsonObject.class);
         return Browser.findTestObject(uiObject,timeOut);
+    }
+
+    public static String captureScreenToBase64String() throws AWTException, IOException {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = screenSize.width;
+        int height = screenSize.height;
+        BufferedImage capture = getBufferedImage(0, 0, width, height);
+        ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
+        ImageIO.write(capture, "JPG", byteStream);
+        String base64String = Base64.encodeBase64String(byteStream.toByteArray());
+        byteStream.close();
+        capture = null;
+        return base64String;
+
+    }
+
+    private static BufferedImage getBufferedImage(int x, int y, int width, int height) throws AWTException {
+        Rectangle area = new Rectangle(x, y , width, height);
+        Robot robot = new Robot();
+        BufferedImage capture = robot.createScreenCapture(area);
+        return capture;
     }
 }

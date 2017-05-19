@@ -1,5 +1,6 @@
 package automation.client.actions;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -7,10 +8,16 @@ import org.openqa.selenium.WebElement;
  */
 public class Select extends Action {
     public WebElement findTestObject() {
-        return null;
+        return findUIObject();
     }
 
     protected void handle(WebElement testObject) {
-
+        assert testObject != null;
+        org.openqa.selenium.support.ui.Select select = new org.openqa.selenium.support.ui.Select(testObject);
+        try {
+            select.selectByVisibleText(this.data);
+        }catch (NoSuchElementException ex){
+            select.selectByValue(this.data);
+        }
     }
 }
