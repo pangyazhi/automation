@@ -1,7 +1,6 @@
 package automation.client.actions;
 
 import com.google.gson.JsonObject;
-import com.sun.istack.internal.NotNull;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -73,7 +72,10 @@ public class Browser {
 
     }
 
-    private static By findBy(@NotNull String way, @NotNull String search) {
+    private static By findBy(String way, String search) {
+        assert StringUtils.isNotEmpty(way);
+        assert StringUtils.isNotEmpty(search);
+
         if (way.equalsIgnoreCase("id"))
             return By.id(search);
         if (way.equalsIgnoreCase("tagname"))

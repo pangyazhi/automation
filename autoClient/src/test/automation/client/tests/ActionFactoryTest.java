@@ -5,10 +5,10 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.FileReader;
 
@@ -18,7 +18,7 @@ import java.io.FileReader;
 public class ActionFactoryTest {
     JsonArray jsonArray;
 
-    @BeforeClass
+    @Before
     public void setUp() throws Exception {
         Gson gson = new Gson();
         jsonArray = (JsonArray) new JsonParser().parse(new JsonReader(new FileReader("./testData.json")));
@@ -125,7 +125,7 @@ public class ActionFactoryTest {
     }
 
 
-    @AfterMethod
+    @After
     public void tearDown() throws Exception {
         BrowserInstance.getInstance().close();
     }

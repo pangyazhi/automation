@@ -14,7 +14,7 @@ public class ActionFactory {
 
         String actionName = parser.parse(message).getAsJsonObject().get("action").getAsString();
 
-        Class<Action> c = null;
+        Class<Action> c;
         try {
             c = (Class<Action>) Class.forName(actionName);
             Action action = gson.fromJson(message, c);

@@ -1,16 +1,17 @@
 package automation.client.tests;
 
 import automation.client.actions.Config;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 
 /**
  * Created by jien.huang on 20/10/2016.
  */
 public class ConfigTest {
-    @BeforeMethod
+    @Before
     public void setUp() throws Exception {
 
     }
@@ -22,7 +23,7 @@ public class ConfigTest {
 
     }
 
-    @AfterMethod
+    @After
     public void tearDown() throws Exception {
 
     }
